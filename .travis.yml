@@ -11,6 +11,7 @@ env:
   matrix:
     - PYTHON=python3
 before_install:
+    ## install conda
   - sudo apt-get update
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
   - bash miniconda.sh -b -p $HOME/miniconda
@@ -21,6 +22,13 @@ before_install:
   # Useful for debugging any issues with conda
   - conda info -a
   - conda install scipy
+
+  ## instal R
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+  - sudo add-apt-repository -y "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -s -c)/"
+  - sudo apt-get update -qq -y
+  - sudo apt-get install git r-base r-base-dev r-recommended -y
+
 after_success:
     - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
 notifications:
