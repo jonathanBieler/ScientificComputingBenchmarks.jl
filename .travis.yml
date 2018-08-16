@@ -12,6 +12,7 @@ env:
     - PYTHON=python3
 before_install:
     - sudo apt-get -qq update && sudo apt-get install -y $PYTHON
+    - pip install scipy
 after_success:
     - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
 notifications:
