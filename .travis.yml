@@ -27,7 +27,7 @@ before_install:
   - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
   - sudo add-apt-repository -y "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -s -c)/"
   - sudo apt-get update -qq -y
-  - sudo apt-get install git r-base r-base-dev r-recommended -y
+  - sudo apt-get install git r-base r-recommended -y
 
 after_success:
     - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
