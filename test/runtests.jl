@@ -1,3 +1,4 @@
 using ScientificComputingBenchmarks
+using Test
 
-ScientificComputingBenchmarks.main()
+@test ScientificComputingBenchmarks.main()

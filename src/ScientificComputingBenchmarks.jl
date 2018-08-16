@@ -1,9 +1,10 @@
 module ScientificComputingBenchmarks
 
     function main()
-        file = joinpath(@__DIR__, "src","Benchmarks","Statistics","Evaluating_pdf","Evaluating_pdf.py")
+        file = joinpath(@__DIR__,"Benchmarks","Statistics","Evaluating_pdf","Evaluating_pdf.py")
         tpy = parse(Float64, read(`python $file`,String) )
-        if(ty)
+        info(tpy)
+        true
     end
 
 end # module
