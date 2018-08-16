@@ -1,0 +1,3 @@
+using ScientificComputingBenchmarks
+
+ScientificComputingBenchmarks.main()
