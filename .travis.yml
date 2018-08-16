@@ -1,0 +1,16 @@
+language: julia
+os:
+    - linux
+julia:
+    - 0.7
+addons:
+  apt:
+    packages:
+      - python3-numpy
+env:
+  matrix:
+    - PYTHON=python3
+after_success:
+    - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
+notifications:
+    email: false
