@@ -23,9 +23,11 @@ module ScientificComputingBenchmarks
         t = 1000*@belapsed main()
     end
 
+    readelements(dir) = filter(s->!startswith(s,"."),readdir(dir))
+
     root() = joinpath(@__DIR__,"Benchmarks")
-    categories() = readdir(root())
-    benchmarks(categorie) = readdir(joinpath(root(),categorie))
+    categories() = readelements(root())
+    benchmarks(categorie) = readelements(joinpath(root(),categorie))
 
     benchmark_file(::Type{T},categorie,benchmark) where T <: Language =
         joinpath(root(),categorie,benchmark,string(benchmark,extension(T)))

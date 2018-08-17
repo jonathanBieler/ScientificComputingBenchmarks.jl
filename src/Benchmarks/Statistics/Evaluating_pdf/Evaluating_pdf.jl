@@ -11,3 +11,5 @@ function main()
     end
     return s
 end
+
+@assert abs(main()-79.19414904703733) < 1e-12
