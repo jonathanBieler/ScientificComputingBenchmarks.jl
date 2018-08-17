@@ -1,7 +1,6 @@
 using Distributions
-using BenchmarkTools
 
-linspace(a,b,l) = range(a,b,length=l)
+linspace(a,b,l) = range(a,stop=b,length=l)
 
 function main()
     s = 0.0
@@ -12,6 +11,3 @@ function main()
     end
     return s
 end
-
-# timeit
-b = @belapsed main()*1000

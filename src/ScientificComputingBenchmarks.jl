@@ -1,13 +1,48 @@
 module ScientificComputingBenchmarks
+    using BenchmarkTools
 
-    function main()
-        file = joinpath(@__DIR__,"Benchmarks","Statistics","Evaluating_pdf","Evaluating_pdf.py")
-        t = parse(Float64, read(`python $file`,String) )
-        @info t
+    abstract type Language end
 
-        file = joinpath(@__DIR__,"Benchmarks","Statistics","Evaluating_pdf","Evaluating_pdf.R")
-        t = parse(Float64, read(`Rscript $file`,String) )
-        @info t
+    struct Julia <: Language end
+    struct R <: Language end
+    struct Python <: Language end
+
+    languages() = [Julia,R,Python]
+
+    extension(::Type{Julia}) = ".jl"
+    extension(::Type{R}) = ".R"
+    extension(::Type{Python}) = ".py"
+
+    benchmark_cmd(::Type{R},file) = `Rscript $file`
+    benchmark_cmd(::Type{Python},file) = `python $file`
+
+    benchmark(::Type{T},file) where T <: Language = parse(Float64, read(benchmark_cmd(T,file),String) )
+
+    function benchmark(::Type{Julia},file)
+        include(file)
+        t = 1000*@belapsed main()
+    end
+
+    root() = joinpath(@__DIR__,"Benchmarks")
+    categories() = readdir(root())
+    benchmarks(categorie) = readdir(joinpath(root(),categorie))
+
+    benchmark_file(::Type{T},categorie,benchmark) where T <: Language =
+        joinpath(root(),categorie,benchmark,string(benchmark,extension(T)))
+
+    function run_benchmarks()
+
+        for c in categories()
+            for b in benchmarks(c), l in languages()
+                file = benchmark_file(l,c,b)
+                if !isfile(file) && @warn "$file not found"
+                    t = Missing
+                else
+                    t = benchmark(l,file)
+                    @info c,b,l,t
+                end
+            end
+        end
 
         true
     end
