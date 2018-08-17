@@ -2,10 +2,9 @@ source("../src/timeit.R")
 
 main = function(){
     s = 0.0
+    x = 0:1000
     for (a in seq(1,2,len=100)){
-        for (x in 0:1000){
-            s = s + dgamma(x,a)
-        }
+        s = s + sum(dgamma(x,a))
     }
     return (s)
 }

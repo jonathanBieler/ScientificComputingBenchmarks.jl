@@ -32,20 +32,32 @@ module ScientificComputingBenchmarks
     benchmark_file(::Type{T},categorie,benchmark) where T <: Language =
         joinpath(root(),categorie,benchmark,string(benchmark,extension(T)))
 
-    function run_benchmarks()
+    function gettime(l,c,b)
+        file = benchmark_file(l,c,b)
+        if !isfile(file) && @warn "$file not found"
+            t = Missing
+        else
+            t = benchmark(l,file)
+        end
+        t
+    end
 
+    print_category(c) = println("** $c **\n\n| Benchmark | Julia | R | Python |\n| --- | --- | --- | --- |")
+    print_benchmark(b,tj,tr,tp) = println("|$b|$tj|$tr|$tp|")
+
+    add_benchmark(c,b) = nothing #copy templates
+
+    function run_benchmarks()
+        println("<------ copy here")
         for c in categories()
-            for b in benchmarks(c), l in languages()
-                file = benchmark_file(l,c,b)
-                if !isfile(file) && @warn "$file not found"
-                    t = Missing
-                else
-                    t = benchmark(l,file)
-                    @info c,b,l,t
-                end
+            print_category(c)
+            for b in benchmarks(c)
+                times = [gettime(l,c,b) for l in languages()]
+                times = times/times[1]#relative time to Julia
+                print_benchmark(b,round.(times,digits=2)...)
             end
         end
-
+        println("<------ copy here")
         true
     end
 

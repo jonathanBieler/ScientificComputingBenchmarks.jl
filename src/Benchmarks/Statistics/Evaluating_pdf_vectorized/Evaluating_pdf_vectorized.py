@@ -4,10 +4,11 @@ import time
 
 def main():
     s = 0.0
+    x = np.arange(1001)
     for a in np.linspace(1,2,100):
-        for x in range(0,1001):
-            s = s + gamma.pdf(x,a)
+        s = s + sum(gamma.pdf(x,a))
     return s
+
 
 assert abs(main()-79.19414904703733) < 1e-12
 
