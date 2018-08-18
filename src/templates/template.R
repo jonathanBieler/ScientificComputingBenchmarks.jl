@@ -1,10 +1,11 @@
 source("../src/timeit.R")
 
-main = function(){
+## benchmarks here
 
-}
+main = function(){ Sys.sleep(0.1) }
 
-#stopifnot(main())
+timeit("Sleep 0.1",main)
 
-# timeit
-cat(timeit(main))
+main = function(){ Sys.sleep(0.2) }
+
+timeit("Sleep 0.1",main)

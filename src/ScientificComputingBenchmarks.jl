@@ -1,6 +1,4 @@
 module ScientificComputingBenchmarks
-    using BenchmarkTools
-    BenchmarkTools.DEFAULT_PARAMETERS.samples = 5
 
     abstract type Language end
 
@@ -14,14 +12,15 @@ module ScientificComputingBenchmarks
     extension(::Type{R}) = ".R"
     extension(::Type{Python}) = ".py"
 
+    benchmark_cmd(::Type{Julia},file) = `julia $file`
     benchmark_cmd(::Type{R},file) = `Rscript $file`
     benchmark_cmd(::Type{Python},file) = `python $file`
 
-    benchmark(::Type{T},file) where T <: Language = parse(Float64, read(benchmark_cmd(T,file),String) )
-
-    function benchmark(::Type{Julia},file)
-        include(file)
-        t = 1000*@belapsed main()
+    function benchmark(::Type{T},file) where T <: Language
+        out = read(benchmark_cmd(T,file),String)
+        out = split(out,"\n")
+        f = (name,t) -> (string(name), parse(Float64,t))
+        out = [f(split(o,"\t")...) for o in out[1:end-1]]
     end
 
     readelements(dir) = filter(s->!startswith(s,"."),readdir(dir))
@@ -33,14 +32,14 @@ module ScientificComputingBenchmarks
     benchmark_file(::Type{T},categorie,benchmark) where T <: Language =
         joinpath(root(),categorie,benchmark,string(benchmark,extension(T)))
 
-    function gettime(l,c,b)
+    function run_benchmark(l,c,b)
         file = benchmark_file(l,c,b)
         if !isfile(file) && @warn "$file not found"
-            t = Missing
+            out = Missing
         else
-            t = benchmark(l,file)
+            out = benchmark(l,file)
         end
-        t
+        out
     end
 
     function add_benchmark(category::String,benchmark::String)
@@ -54,6 +53,12 @@ module ScientificComputingBenchmarks
         end
     end
 
+    function parse_results(results)
+        names = [r[1] for r in results[1]]
+        times = [[r[b][2] for r in results] for b in 1:length(results[1])]
+        names,times
+    end
+
     format(b) = replace(b, "_" => " ")
 
     print_category(c) = println("**$c**\n>\n| Benchmark | Julia | R | Python |\n| --- | --- | --- | --- |")
@@ -64,9 +69,14 @@ module ScientificComputingBenchmarks
         for c in categories()
             print_category(c)
             for b in benchmarks(c)
-                times = [gettime(l,c,b) for l in languages()]
-                times = times/times[1]#relative time to Julia
-                print_benchmark(format(b),round.(times,digits=2)...)
+
+                results = [run_benchmark(l,c,b) for l in languages()]
+                names,times = parse_results(results)
+
+                for i=1:length(names)
+                    t = times[i]/times[i][1]#relative time to Julia
+                    print_benchmark(names[i],round.(t,digits=2)...)
+                end
             end
             println(">")
         end

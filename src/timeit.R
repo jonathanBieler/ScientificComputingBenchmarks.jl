@@ -1,6 +1,6 @@
 options(digits.secs = 12)
 
-timeit = function(f){
+timeit = function(name,f){
     mintrials = 5
     tmin = Inf
     for (i in 1:mintrials){
@@ -10,5 +10,5 @@ timeit = function(f){
         t = end.time - start.time
         tmin = min(t,tmin)
     }
-    cat( tmin )
+    cat( paste(name,"\t",tmin,"\n",sep="") )
 }

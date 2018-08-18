@@ -1,20 +1,25 @@
-#from scipy.stats import gamma
-#import numpy as np
+## setup
 import time
-
-def main():
-    1
-
-#assert main()
-
-# timeit
 mintrials = 5
 
-tmin = float('inf')
-for i in range(mintrials):
-    t = time.time()
-    f = main()
-    t = time.time()-t
-    if t < tmin: tmin = t
+def timeit(name):
+    tmin = float('inf')
+    for i in range(mintrials):
+        t = time.time()
+        f = main()
+        t = time.time()-t
+        if t < tmin: tmin = t
 
-print(str(tmin*1000))
+    print(name + "\t" + str(tmin*1000))
+
+## benchmarks here
+
+def main():
+    time.sleep(0.1)
+
+timeit("sleep 0.1")
+
+def main():
+    time.sleep(0.2)
+
+timeit("sleep 0.2")
