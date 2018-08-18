@@ -1,5 +1,6 @@
 module ScientificComputingBenchmarks
     using BenchmarkTools
+    BenchmarkTools.DEFAULT_PARAMETERS.samples = 5
 
     abstract type Language end
 
@@ -42,10 +43,21 @@ module ScientificComputingBenchmarks
         t
     end
 
-    print_category(c) = println("** $c **\n\n| Benchmark | Julia | R | Python |\n| --- | --- | --- | --- |")
-    print_benchmark(b,tj,tr,tp) = println("|$b|$tj|$tr|$tp|")
+    function add_benchmark(category::String,benchmark::String)
+        path = joinpath(root(),category,benchmark)
+        isdir(path) && error("Benchmark $path already exists")
+        mkpath(path)
+        for l in languages()
+            src = joinpath(@__DIR__,"templates",string("template",extension(l)))
+            dest = joinpath(path,string(benchmark,extension(l)))
+            cp(src,dest)
+        end
+    end
 
-    add_benchmark(c,b) = nothing #copy templates
+    format(b) = replace(b, "_" => " ")
+
+    print_category(c) = println("**$c**\n>\n| Benchmark | Julia | R | Python |\n| --- | --- | --- | --- |")
+    print_benchmark(b,tj,tr,tp) = println("|$b|$tj|$tr|$tp|")
 
     function run_benchmarks()
         println("<------ copy here")
@@ -54,8 +66,9 @@ module ScientificComputingBenchmarks
             for b in benchmarks(c)
                 times = [gettime(l,c,b) for l in languages()]
                 times = times/times[1]#relative time to Julia
-                print_benchmark(b,round.(times,digits=2)...)
+                print_benchmark(format(b),round.(times,digits=2)...)
             end
+            println(">")
         end
         println("<------ copy here")
         true

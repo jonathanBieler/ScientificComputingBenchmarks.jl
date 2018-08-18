@@ -3,7 +3,7 @@ source("../src/timeit.R")
 main = function(){
     s = 0.0
     for (a in seq(1,2,len=100)){
-        for (x in 0:1000){
+        for (x in 0:100){
             s = s + dgamma(x,a)
         }
     }

@@ -5,7 +5,7 @@ import time
 def main():
     s = 0.0
     for a in np.linspace(1,2,100):
-        for x in range(0,1001):
+        for x in range(0,101):
             s = s + gamma.pdf(x,a)
     return s
 
