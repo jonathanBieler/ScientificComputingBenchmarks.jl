@@ -8,12 +8,18 @@
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|Sleep|1.0|0.99|0.99|
+|Sleep for 0.1s|1.0 (101.19ms)|0.99|0.99|
+>
+**Optimization**
+>
+| Benchmark | Julia | R | Python |
+| --- | --- | --- | --- |
+|Optimize a function with Nelder-Mead|1.0 (1.09ms)|1281.59|61.19|
 >
 **Statistics**
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|Evaluating pdf|1.0|5.31|259.75|
-|Evaluating pdf vectorized|1.0|1.09|0.89|
-|Generate random numbers|1.0|2.18|11.95|
+|Evaluate pdf|1.0 (0.19ms)|13.19|481.09|
+|Evaluate pdf (vectorized)|1.0 (0.21ms)|7.02|4.8|
+|Generate random numbers|1.0 (0.73ms)|1.44|4.88|
