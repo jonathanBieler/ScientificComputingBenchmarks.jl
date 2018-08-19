@@ -6,4 +6,4 @@ function main()
 end
 
 @assert main()
-timeit("Sleep",main)
+timeit("Sleep for 0.1s",main)

@@ -13,13 +13,10 @@ def timeit(name):
     print(name + "\t" + str(tmin*1000))
 
 ## benchmarks here
+from scipy.optimize import minimize, rosen
+import numpy as np
 
 def main():
-    time.sleep(0.1)
+    minimize(rosen, -5*np.ones(9), method='nelder-mead', options={'xtol': 1e-16, 'maxiter' : 1500, 'maxfev' : 5000 })
 
-timeit("sleep 0.1")
-
-def main():
-    time.sleep(0.2)
-
-timeit("sleep 0.2")
+timeit("Optimize a function with Nelder-Mead")

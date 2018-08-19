@@ -4,4 +4,4 @@ source("../src/timeit.R")
 
 main = function(){ Sys.sleep(0.1) }
 
-timeit("Sleep",main)
+timeit("Sleep for 0.1s",main)

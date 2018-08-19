@@ -14,4 +14,4 @@ def timeit(name):
 def main():
     time.sleep(0.1)
 
-timeit("Sleep")
+timeit("Sleep for 0.1s")
