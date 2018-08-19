@@ -1,3 +1,4 @@
+## setup
 import time
 mintrials = 5
 
@@ -11,7 +12,14 @@ def timeit(name):
 
     print(name + "\t" + str(tmin*1000))
 
+## benchmarks here
+
 def main():
     time.sleep(0.1)
 
-timeit("Sleep")
+timeit("sleep 0.1")
+
+def main():
+    time.sleep(0.2)
+
+timeit("sleep 0.2")

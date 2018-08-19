@@ -51,6 +51,9 @@ module ScientificComputingBenchmarks
             dest = joinpath(path,string(benchmark,extension(l)))
             cp(src,dest)
         end
+        src = joinpath(@__DIR__,"templates","README.md")
+        dest = joinpath(path,"README.md")
+        cp(src,dest)
     end
 
     function parse_results(results)
@@ -62,7 +65,7 @@ module ScientificComputingBenchmarks
     format(b) = replace(b, "_" => " ")
 
     print_category(c) = println("**$c**\n>\n| Benchmark | Julia | R | Python |\n| --- | --- | --- | --- |")
-    print_benchmark(b,tj,tr,tp) = println("|$b|$tj|$tr|$tp|")
+    print_benchmark(b,abstj,tj,tr,tp) = println("|$b|$tj - $abstj ms|$tr|$tp|")
 
     function run_benchmarks()
         println("<------ copy here")
@@ -74,8 +77,9 @@ module ScientificComputingBenchmarks
                 names,times = parse_results(results)
 
                 for i=1:length(names)
-                    t = times[i]/times[i][1]#relative time to Julia
-                    print_benchmark(names[i],round.(t,digits=2)...)
+                    abstj = times[i][1]
+                    t = times[i]/abstj#relative time to Julia
+                    print_benchmark(names[i],round(abstj,digits=2), round.(t,digits=2)...)
                 end
             end
             println(">")

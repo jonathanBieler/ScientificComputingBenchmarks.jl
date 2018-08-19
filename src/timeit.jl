@@ -1,7 +1,7 @@
-
 function timeit(name,f)
     tmin = Inf
-    for i=1:5
+    mintrials = 10
+    for i=1:mintrials
         t = 1000*@elapsed main()
         tmin = min(tmin,t)
     end
