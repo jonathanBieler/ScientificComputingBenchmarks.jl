@@ -65,7 +65,7 @@ module ScientificComputingBenchmarks
     format(b) = replace(b, "_" => " ")
 
     print_category(c) = println("**$c**\n>\n| Benchmark | Julia | R | Python |\n| --- | --- | --- | --- |")
-    print_benchmark(b,abstj,tj,tr,tp) = println("|$b|$tj - $abstj ms|$tr|$tp|")
+    print_benchmark(b,abstj,tj,tr,tp) = println("|$b|$tj ($(abstj)ms)|$tr|$tp|")
 
     function run_benchmarks()
         println("<------ copy here")
