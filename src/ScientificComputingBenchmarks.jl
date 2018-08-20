@@ -62,10 +62,10 @@ module ScientificComputingBenchmarks
         names,times
     end
 
-    format(b) = replace(b, "_" => " ")
+    link(name,c,b) = "[$name](../master/src/Benchmarks/$c/$b/)"
 
     print_category(c) = println("**$c**\n>\n| Benchmark | Julia | R | Python |\n| --- | --- | --- | --- |")
-    print_benchmark(b,abstj,tj,tr,tp) = println("|$b|$tj ($(abstj)ms)|$tr|$tp|")
+    print_benchmark(name,abstj,tj,tr,tp) = println("|$name|$tj ($(abstj)ms)|$tr|$tp|")
 
     function run_benchmarks()
         println("<------ copy here")
@@ -79,7 +79,8 @@ module ScientificComputingBenchmarks
                 for i=1:length(names)
                     abstj = times[i][1]
                     t = times[i]/abstj#relative time to Julia
-                    print_benchmark(names[i],round(abstj,digits=2), round.(t,digits=2)...)
+                    name = link(names[i],c,b)
+                    print_benchmark(name,round(abstj,digits=2), round.(t,digits=2)...)
                 end
             end
             println(">")
