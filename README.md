@@ -8,6 +8,8 @@ Benchmark common scientific programming operations in Julia, R and Python.
 All timings are show relative to Julia (with absolute value in millisecond shown
 for Julia). Each benchmark is run ten times and the best timing is kept.
 
+## Results
+
 **Misc**
 >
 | Benchmark | Julia | R | Python |
