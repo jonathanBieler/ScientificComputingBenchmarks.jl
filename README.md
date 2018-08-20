@@ -14,21 +14,22 @@ for Julia). Each benchmark is run ten times and the best timing is kept.
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|Sleep for 0.1s|1.0 (101.19ms)|0.99|0.99|
+|[Sleep for 0.1s](../master/src/Benchmarks/Misc/Sleep/)|1.0 (101.19ms)|0.99|0.99|
 >
 **Optimization**
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|Optimize a function with Nelder-Mead|1.0 (1.09ms)|1281.59|61.19|
+|[Optimize a function with Nelder-Mead](../master/src/Benchmarks/Optimization/Function_Minimization/)|1.0 (1.07ms)|1395.11|62.57|
 >
 **Statistics**
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|Evaluate pdf|1.0 (0.19ms)|13.19|481.09|
-|Evaluate pdf (vectorized)|1.0 (0.21ms)|7.02|4.8|
-|Generate random numbers|1.0 (0.73ms)|1.44|4.88|
+|[Evaluate pdf](../master/src/Benchmarks/Statistics/Evaluating_pdf/)|1.0 (0.19ms)|13.42|481.42|
+|[Evaluate pdf (vectorized)](../master/src/Benchmarks/Statistics/Evaluating_pdf/)|1.0 (0.21ms)|7.41|4.92|
+|[Generate random numbers](../master/src/Benchmarks/Statistics/Evaluating_pdf/)|1.0 (0.73ms)|1.44|5.01|
+>
 
 ## Contribute
 
