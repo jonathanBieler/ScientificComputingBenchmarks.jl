@@ -33,6 +33,15 @@ for Julia). Each benchmark is run ten times and the best timing is kept.
 
 ## Contribute
 
+### Setup
+
+- Clone the package on Julia >v0.7.
+- Install [Python 3.6](https://conda.io/miniconda.html) and [R](https://www.r-project.org).
+- Install dependencies for [Python](https://github.com/jonathanBieler/ScientificComputingBenchmarks.jl/blob/master/.travis.yml#L24)  and [R](https://github.com/jonathanBieler/ScientificComputingBenchmarks.jl/blob/master/.travis.yml#L31).
+- Test the package to run the benchmarks.
+
+### Adding benchmarks
+
 [Benchmarks](https://github.com/jonathanBieler/ScientificComputingBenchmarks.jl/tree/master/src/Benchmarks) are organized in categories. Each subfolder in a category contains
 a file for each language and a file can contain several benchmarks that are
 run together. You can simply add a benchmark by editing these files.
