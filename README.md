@@ -40,7 +40,7 @@ To add a new category or a new subfolder use:
 
 ```julia
 using ScientificComputingBenchmarks
-ScientificComputingBenchmarks.add_benchmark("Statistics","Generate_random_numbers")
+ScientificComputingBenchmarks.add_benchmark("Category","Subfolder")
 ```
 
 This will create the folders and templates for each language.
