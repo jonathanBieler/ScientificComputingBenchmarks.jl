@@ -40,6 +40,8 @@ for Julia). Each benchmark is run ten times and the best timing is kept.
 - Install dependencies for [Python](https://github.com/jonathanBieler/ScientificComputingBenchmarks.jl/blob/master/.travis.yml#L24)  and [R](https://github.com/jonathanBieler/ScientificComputingBenchmarks.jl/blob/master/.travis.yml#L31).
 - Test the package to run the benchmarks.
 
+Note that the commands `julia`, `python` and `R` need to refer to the correct versions.
+
 ### Adding benchmarks
 
 [Benchmarks](https://github.com/jonathanBieler/ScientificComputingBenchmarks.jl/tree/master/src/Benchmarks) are organized in categories. Each subfolder in a category contains
