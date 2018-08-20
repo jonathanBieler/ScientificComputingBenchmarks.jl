@@ -32,7 +32,7 @@ for Julia). Each benchmark is run ten times and the best timing is kept.
 
 ## Contribute
 
-Benchmarks are organized in categories. Each subfolder in a category contains
+[Benchmarks](https://github.com/jonathanBieler/ScientificComputingBenchmarks.jl/tree/master/src/Benchmarks) are organized in categories. Each subfolder in a category contains
 a file for each language and a file can contain several benchmarks that are
 run together. You can simply add a benchmark by editing these files.
 
