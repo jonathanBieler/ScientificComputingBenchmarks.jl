@@ -192,10 +192,10 @@ uuid = "429524aa-4258-5aef-a3af-852621145aeb"
 version = "0.16.0"
 
 [[OrderedCollections]]
-deps = ["Random", "Serialization", "Test"]
-git-tree-sha1 = "cc23c786049328c93138da14e7020a464d707a23"
+deps = ["InteractiveUtils", "Pkg", "Random", "Serialization", "Test"]
+git-tree-sha1 = "27af6dc22697bf20ace8e3a45f404a34eaf0b819"
 uuid = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
-version = "0.1.0"
+version = "1.0.0"
 
 [[PDMats]]
 deps = ["Arpack", "LinearAlgebra", "SparseArrays", "SuiteSparse", "Test"]
