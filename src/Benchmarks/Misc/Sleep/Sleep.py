@@ -1,5 +1,5 @@
 import time
-mintrials = 5
+mintrials = 10
 
 def timeit(name):
     tmin = float('inf')
@@ -12,6 +12,6 @@ def timeit(name):
     print(name + "\t" + str(tmin*1000))
 
 def main():
-    time.sleep(0.1)
+    time.sleep(1/100)
 
-timeit("Sleep for 0.1s")
+timeit("Sleep for 10ms")
