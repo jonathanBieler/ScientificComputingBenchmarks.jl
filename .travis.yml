@@ -21,7 +21,8 @@ before_install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-  - conda install scipy pandas pysam
+  - conda install scipy pandas
+  - conda install -c https://conda.anaconda.org/bioconda pysam
 
   ## instal R
   - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
