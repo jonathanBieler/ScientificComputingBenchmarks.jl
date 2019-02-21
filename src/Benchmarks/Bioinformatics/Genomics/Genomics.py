@@ -1,6 +1,6 @@
 ## setup
 import time
-mintrials = 3#this is very slow, let's do only 3
+mintrials = 5#this is very slow
 
 def timeit(name):
     tmin = float('inf')

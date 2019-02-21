@@ -1,11 +1,13 @@
 source("../src/timeit.R")
+library(Rsamtools)
 
-## benchmarks here
+main = function(){
+    aln = scanBam('../Data/wgEncodeUwRepliSeqK562G1AlnRep1.bam', index='../Data/wgEncodeUwRepliSeqK562G1AlnRep1.bam.bai')
+    aln = aln[[1]]
 
-main = function(){ Sys.sleep(0.1) }
+    q = as(aln$qual,"IntegerList")
+    return(mean(mean(q)))
+}
 
-timeit("Sleep 0.1",main)
-
-main = function(){ Sys.sleep(0.2) }
-
-timeit("Sleep 0.1",main)
+stopifnot( abs(main()-51.061717683307776) < 1e-6 )
+timeit("Computing mean quality of reads", main)
