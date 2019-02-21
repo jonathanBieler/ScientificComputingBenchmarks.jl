@@ -12,7 +12,7 @@ timeit("Loading a 10k row dataframe",main)
 global const df = CSV.read(joinpath(@__DIR__,"../../../../Data/dataframe.csv"))
 global const df2 = df[1:500,:]
 
-main() = size(join(df2,df2,on=:d))
+main() = size(join(df2,df2,on=:d,makeunique=true))
 @assert main() == (125018, 7)
 timeit("join",main)
 
