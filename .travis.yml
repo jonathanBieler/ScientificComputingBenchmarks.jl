@@ -30,7 +30,7 @@ before_install:
   - sudo apt-get update -qq -y
   - sudo apt-get install git r-base r-recommended -y
   - sudo R -e "install.packages(\"neldermead\", repos=\"https://cran.rstudio.com\")"
-  - sudo R -e "source("http://bioconductor.org/biocLite.R"); biocLite("Rsamtools")"
+  - sudo R -e "source(\"http://bioconductor.org/biocLite.R\"); biocLite(\"Rsamtools\")"
 
 after_success:
     - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
