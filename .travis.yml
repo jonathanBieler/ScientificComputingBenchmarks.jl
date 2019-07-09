@@ -29,7 +29,7 @@ before_install:
   - sudo add-apt-repository -y "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -s -c)/"
   - sudo apt-get update -qq -y
   - sudo apt-get install git r-base r-recommended -y
-  - sudo R -e "install.packages(\"neldermead\", repos=\"https://cran.rstudio.com\")"
+  - sudo R -e "install.packages(c(\"neldermead\",\"data.table\"), repos=\"https://cran.rstudio.com\")"
   - sudo R -e "source(\"http://bioconductor.org/biocLite.R\"); biocLite(\"Rsamtools\")"
 
 after_success:
