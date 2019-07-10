@@ -13,42 +13,42 @@ for Julia). Each benchmark is run ten times and the best timing is kept.
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|[Computing mean quality of reads](../master/src/Benchmarks/Bioinformatics/Genomics/)|1.0 (1569.7ms)|1.67|6.44|
+|[Computing mean quality of reads](../master/src/Benchmarks/Bioinformatics/Genomics/)|1.0 (1618.41ms)|1.71|5.83|
 >
 **DataFrames**
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|[Loading a 10k row dataframe](../master/src/Benchmarks/DataFrames/DataFrames/)|1.0 (15.55ms)|3.0|0.75|
-|[join](../master/src/Benchmarks/DataFrames/DataFrames/)|1.0 (11.6ms)|65.58|2.14|
-|[apply function on a column](../master/src/Benchmarks/DataFrames/DataFrames/)|1.0 (0.06ms)|6.12|29.95|
-|[sort](../master/src/Benchmarks/DataFrames/DataFrames/)|1.0 (2.19ms)|0.46|1.07|
+|[Loading a 10k row dataframe](../master/src/Benchmarks/DataFrames/DataFrames/)|1.0 (16.7ms)|1.89|0.59|
+|[join](../master/src/Benchmarks/DataFrames/DataFrames/)|1.0 (9.71ms)|1.53|2.11|
+|[apply function on a column](../master/src/Benchmarks/DataFrames/DataFrames/)|1.0 (0.06ms)|13.16|31.46|
+|[sort](../master/src/Benchmarks/DataFrames/DataFrames/)|1.0 (2.54ms)|0.22|0.89|
 >
 **Optimization**
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|[Optimize a function with Nelder-Mead](../master/src/Benchmarks/Optimization/Function_Minimization/)|1.0 (1.09ms)|1342.45|59.56|
+|[Optimize a function with Nelder-Mead](../master/src/Benchmarks/Optimization/Function_Minimization/)|1.0 (1.0ms)|1423.36|61.46|
 >
 **RosettaCode**
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|[Runge-Kutta method](../master/src/Benchmarks/RosettaCode/RosettaCode/)|1.0 (0.06ms)|52.84|34.18|
+|[Runge-Kutta method](../master/src/Benchmarks/RosettaCode/RosettaCode/)|1.0 (0.06ms)|55.17|34.31|
 >
 **Statistics**
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|[Evaluate pdf](../master/src/Benchmarks/Statistics/Evaluating_pdf/)|1.0 (0.19ms)|13.13|478.38|
-|[Evaluate pdf (vectorized)](../master/src/Benchmarks/Statistics/Evaluating_pdf/)|1.0 (0.21ms)|7.22|4.86|
-|[Generate random numbers](../master/src/Benchmarks/Statistics/Evaluating_pdf/)|1.0 (0.74ms)|1.42|4.87|
+|[Evaluate pdf](../master/src/Benchmarks/Statistics/Evaluating_pdf/)|1.0 (0.18ms)|13.33|457.52|
+|[Evaluate pdf (vectorized)](../master/src/Benchmarks/Statistics/Evaluating_pdf/)|1.0 (0.2ms)|6.97|5.56|
+|[Generate random numbers](../master/src/Benchmarks/Statistics/Evaluating_pdf/)|1.0 (0.87ms)|0.96|3.87|
 >
 **Misc**
 >
 | Benchmark | Julia | R | Python |
 | --- | --- | --- | --- |
-|[Sleep for 10ms](../master/src/Benchmarks/Misc/Sleep/)|1.0 (11.11ms)|0.92|0.91|
+|[Sleep for 10ms](../master/src/Benchmarks/Misc/Sleep/)|1.0 (11.09ms)|0.91|0.91|
 >
 
 ## Contribute
