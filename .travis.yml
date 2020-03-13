@@ -28,7 +28,7 @@ before_install:
   - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
   - sudo add-apt-repository -y "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -s -c)/"
   - sudo apt-get update -qq -y
-  - sudo apt-get install git r-base r-recommended -y
+  - sudo apt-get install git r-base r-recommended -y --allow-unauthenticated
   - sudo R -e "install.packages(c(\"neldermead\",\"data.table\"), repos=\"https://cran.rstudio.com\")"
   - sudo R -e "source(\"http://bioconductor.org/biocLite.R\"); biocLite(\"Rsamtools\")"
 
